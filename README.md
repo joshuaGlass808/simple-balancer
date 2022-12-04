@@ -18,3 +18,11 @@ Once in the container run:
 `cd simple-balancer/bpftool/src && make install && cd ../.. && make`
 
 From here, open up another tab and on the linux host you are running the LB, run `sudo cat /sys/kernel/debug/tracing/trace_pipe` to see the print statements
+
+example output from trace:
+```
+$ sudo cat /sys/kernel/debug/tracing/trace_pipe
+            curl-898261  [000] d.s11 11135171.421725: bpf_trace_printk: Got TCP packet from 10011ac
+            curl-898261  [000] dNs11 11135171.421745: bpf_trace_printk: Packet going to 20011ac
+```
+output is based on what was in the bpf_printk(...) calls
